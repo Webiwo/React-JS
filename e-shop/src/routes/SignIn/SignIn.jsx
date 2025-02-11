@@ -1,4 +1,6 @@
 import SignUp from "../../components/SignUp/SignUp";
+import Button from "../../components/Button/Button";
+import { FcGoogle } from "react-icons/fc";
 
 import {
   signInWithGooglePopup,
@@ -14,7 +16,10 @@ const SignIn = () => {
   return (
     <div>
       <h1>Sign In</h1>
-      <button onClick={logGoogleUser}>Sign in with Google Popup</button>
+      <Button buttonType="google" onClick={logGoogleUser}>
+        Sign in with
+        <FcGoogle />
+      </Button>
       <SignUp />
     </div>
   );

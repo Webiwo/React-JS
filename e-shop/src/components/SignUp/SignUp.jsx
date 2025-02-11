@@ -4,6 +4,7 @@ import {
   createUserDocFromAuth,
 } from "../../utils/firebase/firebaseUtils";
 import FormInput from "../FormInput/FormInput";
+import Button from "../Button/Button";
 import "./SignUp.css";
 
 const signUpFormFields = {
@@ -87,7 +88,9 @@ const SignUp = () => {
           name="confirmPassword"
           value={confirmPassword}
         />
-        <button type="submit">Sign Up</button>
+        <Button buttonType="inverted" type="submit">
+          Sign Up
+        </Button>
       </form>
     </div>
   );
