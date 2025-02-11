@@ -34,6 +34,17 @@
     }
   }
 
+  &.facebook-sign-in {
+    background-color: #1a89f1;
+    color: white;
+    padding-right: 1px;
+
+    &:hover {
+      background-color: #1877d0;
+      border: none;
+    }
+  }
+
   &.inverted {
     background-color: white;
     color: black;

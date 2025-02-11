@@ -1,7 +1,6 @@
 $sub-color: #636b91;
 $main-color: black;
 $letter-spacing: 1px;
-$font-size: 1.5rem;
 
 @mixin shrinkLabel {
   top: -1em;
@@ -20,7 +19,7 @@ $font-size: 1.5rem;
     padding: 10px 10px 10px 4px;
     background-color: white;
     color: $sub-color;
-    font-size: $font-size;
+    font-size: 1rem;
     border: none;
     border-bottom: 1px solid $sub-color;
 
@@ -43,7 +42,7 @@ $font-size: 1.5rem;
   left: 5px;
   top: 10px;
   color: $sub-color;
-  font-size: $font-size;
+  font-size: 1.3rem;
   font-weight: 800;
   letter-spacing: $letter-spacing;
   pointer-events: none;

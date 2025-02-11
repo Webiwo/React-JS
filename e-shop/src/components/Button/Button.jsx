@@ -3,6 +3,7 @@ import "./Button.scss";
 
 const ButtonTypes = {
   google: "google-sign-in",
+  facebook: "facebbok-sign-in",
   inverted: "inverted",
 };
 

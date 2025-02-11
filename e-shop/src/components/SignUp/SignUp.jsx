@@ -5,7 +5,7 @@ import {
 } from "../../utils/firebase/firebaseUtils";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
-import "./SignUp.css";
+import "./SignUp.scss";
 
 const signUpFormFields = {
   displayName: "",

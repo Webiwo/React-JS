@@ -1,0 +1,39 @@
+.sign-in-container {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 40px 4px;
+
+  h2 {
+    margin-left: 4px;
+    font-size: 2.25rem;
+    letter-spacing: 1px;
+  }
+
+  span {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: gray;
+    margin-left: 4px;
+    letter-spacing: 2px;
+  }
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  .sign-in-container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .buttons-container {
+    flex-direction: column;
+    gap: 5px;
+    width: 95%;
+  }
+}

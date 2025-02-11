@@ -2,7 +2,9 @@ import { initializeApp } from "firebase/app";
 import {
   getAuth,
   signInWithPopup,
+  signInWithEmailAndPassword,
   GoogleAuthProvider,
+  FacebookAuthProvider,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -17,15 +19,27 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
-const provider = new GoogleAuthProvider();
-provider.setCustomParameters({
+
+// Authentication
+const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({
   prompt: "select_account",
+});
+
+const facebookProvider = new FacebookAuthProvider();
+facebookProvider.setCustomParameters({
+  display: "popup",
 });
 
 export const auth = getAuth(firebaseApp);
 
-export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const signInWithGooglePopup = () =>
+  signInWithPopup(auth, googleProvider);
 
+export const signInWithFacebookPopup = () =>
+  signInWithPopup(auth, facebookProvider);
+
+// Database
 export const db = getFirestore();
 
 export const createUserDocFromAuth = async (userAuth, additionalData) => {
@@ -53,4 +67,9 @@ export const createUserDocFromAuth = async (userAuth, additionalData) => {
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!(email && password)) return;
   return await createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!(email && password)) return;
+  return await signInWithEmailAndPassword(auth, email, password);
 };
