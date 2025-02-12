@@ -4,15 +4,15 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import "./Shop.css";
 
 const Shop = () => {
-    const { products } = useContext(ProductsContext);
+  const { products } = useContext(ProductsContext);
 
-    return (
-        <div className="products-container">
-            {products.map(({ id, ...product }) => (
-                <ProductCard key={id} product={product} />
-            ))}
-        </div>
-    )
-}
+  return (
+    <div className="products-container">
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
+  );
+};
 
-export default Shop; 
+export default Shop;
