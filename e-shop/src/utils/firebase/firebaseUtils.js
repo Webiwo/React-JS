@@ -9,7 +9,17 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+  query,
+  getDocs,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APP_API_KEY,
@@ -22,7 +32,9 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 
-// Authentication
+// **********************************************
+// AUTHENTICATION
+// **********************************************
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
   prompt: "select_account",
@@ -41,9 +53,20 @@ export const signInWithGooglePopup = () =>
 export const signInWithFacebookPopup = () =>
   signInWithPopup(auth, facebookProvider);
 
-// Database
+export const signOutUser = async () => {
+  await signOut(auth);
+};
+
+export const onAuthStateChangedListener = (callback) => {
+  return onAuthStateChanged(auth, callback);
+};
+
+// **********************************************
+// DATABASE
+// **********************************************
 export const db = getFirestore();
 
+// users
 export const createUserDocFromAuth = async (userAuth, additionalData) => {
   const userDocRef = doc(db, "users", userAuth.uid);
   const userSnapshot = await getDoc(userDocRef);
@@ -76,10 +99,33 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   return await signInWithEmailAndPassword(auth, email, password);
 };
 
-export const signOutUser = async () => {
-  await signOut(auth);
+// products
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
+
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
+
+  await batch.commit();
+  console.log("Products loaded");
 };
 
-export const onAuthStateChangedListener = (callback) => {
-  return onAuthStateChanged(auth, callback);
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, "categories");
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnap) => {
+    const { title, items } = docSnap.data();
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {});
+
+  return categoryMap;
 };
