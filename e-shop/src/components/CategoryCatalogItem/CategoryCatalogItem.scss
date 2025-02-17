@@ -1,4 +1,4 @@
-.category-container {
+.category-catalog-item-container {
   min-width: 30%;
   height: 240px;
   flex: 1 1 auto;
@@ -17,7 +17,7 @@
       transition: transform 3s linear;
     }
 
-    & .category-body-container {
+    & .category-catalog-item-body {
       opacity: 1;
     }
   }
@@ -29,7 +29,7 @@
     background-position: center;
   }
 
-  .category-body-container {
+  .category-catalog-item-body {
     height: 90px;
     padding: 0 0.8rem;
     display: flex;

@@ -7,19 +7,24 @@ import "./Category.scss";
 const Category = () => {
   const { category } = useParams();
   const { categoryMap } = useContext(CategoriesContext);
+  console.log(category, categoryMap);
 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(categoryMap[category]);
 
   useEffect(() => {
     setProducts(categoryMap[category]);
   }, [category, categoryMap]);
 
   return (
-    <div className="category-container">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
+    <>
+      <h2 className="category-title">{category.toUpperCase()}</h2>
+      <div className="category-container">
+        {products &&
+          products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+      </div>
+    </>
   );
 };
 

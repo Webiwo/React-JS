@@ -12,7 +12,6 @@ export const CategoriesContext = createContext({
 
 export const CategoriesProvider = ({ children }) => {
   const [categoryMap, setCategoryMap] = useState({});
-
   //adding products to DB
   /*
   useEffect(() => {
@@ -24,6 +23,7 @@ export const CategoriesProvider = ({ children }) => {
     const getCategoryMap = async () => {
       const catMap = await getCategoriesAndDocuments();
       setCategoryMap(catMap);
+      console.log("loaded");
     };
     getCategoryMap();
   }, []);

@@ -13,8 +13,8 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="shop/*" element={<Shop />} />
         <Route path="checkout" element={<Checkout />} />
+        <Route path="auth" element={<Authentication />} />
       </Route>
-      <Route path="auth" element={<Authentication />} />
     </Routes>
   );
 };

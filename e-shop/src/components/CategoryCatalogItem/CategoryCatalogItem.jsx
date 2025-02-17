@@ -1,18 +1,18 @@
 /* eslint-disable react/prop-types */
-import "./CategoryItem.scss";
+import "./CategoryCatalogItem.scss";
 
-const CategoryItem = ({ category }) => {
+const CategoryCatalogItem = ({ category }) => {
   const { imageUrl, title } = category;
 
   return (
-    <div className="category-container">
+    <div className="category-catalog-item-container">
       <div
         className="background-image"
         style={{
           backgroundImage: `url(${imageUrl})`,
         }}
       />
-      <div className="category-body-container">
+      <div className="category-catalog-item-body">
         <h2>{title}</h2>
         <p>shop now</p>
       </div>
@@ -20,4 +20,4 @@ const CategoryItem = ({ category }) => {
   );
 };
 
-export default CategoryItem;
+export default CategoryCatalogItem;
