@@ -1,20 +1,44 @@
 /* eslint-disable react/prop-types */
-import "./Button.scss";
+import {
+  BaseButton,
+  GoogleSignInButton,
+  FacebookSignInButton,
+  InvertedButton,
+  GoogleIcon,
+} from "./ButtonStyles.jsx";
 
-const ButtonTypes = {
+export const ButtonTypes = {
+  base: "base",
   google: "google-sign-in",
   facebook: "facebbok-sign-in",
   inverted: "inverted",
 };
 
+const getButton = (buttonType = ButtonTypes.base) =>
+  ({
+    [ButtonTypes.base]: BaseButton,
+    [ButtonTypes.google]: GoogleSignInButton,
+    [ButtonTypes.facebook]: FacebookSignInButton,
+    [ButtonTypes.inverted]: InvertedButton,
+  }[buttonType]);
+
+const DefaultIcon = () => <></>;
+const getButtonIcon = (buttonType = ButtonTypes.base) =>
+  ({
+    [ButtonTypes.base]: DefaultIcon,
+    [ButtonTypes.google]: GoogleIcon,
+    [ButtonTypes.facebook]: DefaultIcon,
+    [ButtonTypes.inverted]: DefaultIcon,
+  }[buttonType]);
+
 const Button = ({ children, buttonType, ...otherProps }) => {
+  const CustomButton = getButton(buttonType);
+  const CustomIcon = getButtonIcon(buttonType);
+
   return (
-    <button
-      className={`button-container ${ButtonTypes[buttonType]}`}
-      {...otherProps}
-    >
-      {children}
-    </button>
+    <CustomButton {...otherProps}>
+      {children} <CustomIcon />
+    </CustomButton>
   );
 };
 

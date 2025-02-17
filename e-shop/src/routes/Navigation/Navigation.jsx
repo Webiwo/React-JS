@@ -6,7 +6,12 @@ import { signOutUser } from "../../utils/firebase/firebaseUtils";
 import CartIcon from "../../components/CartIcon/CartIcon";
 import CartDropdown from "../../components/CartDropdown/CartDropdown";
 import ShopLogo from "../../assets/shop-logo.svg?react";
-import "./Navigation.scss";
+import {
+  HeaderBar,
+  LogoLink,
+  NavLinksContainer,
+  NavLink,
+} from "./NavigationStyles";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -19,27 +24,23 @@ const Navigation = () => {
 
   return (
     <>
-      <header className="header-bar">
-        <Link className="logo-link" to="/">
+      <HeaderBar>
+        <LogoLink to="/">
           <ShopLogo className="logo" />
-        </Link>
-        <nav className="nav-links-container">
-          <Link className="nav-link" to="/shop">
-            shop
-          </Link>
+        </LogoLink>
+        <NavLinksContainer>
+          <NavLink to="/shop">shop</NavLink>
           {currentUser ? (
-            <span className="nav-link" onClick={signOutHandler}>
+            <NavLink as="span" onClick={signOutHandler}>
               sign out
-            </span>
+            </NavLink>
           ) : (
-            <Link className="nav-link" to="/auth">
-              sign in
-            </Link>
+            <NavLink to="/auth">sign in</NavLink>
           )}
           <CartIcon />
-        </nav>
+        </NavLinksContainer>
         {isCartOpen && <CartDropdown />}
-      </header>
+      </HeaderBar>
       <Outlet />
     </>
   );

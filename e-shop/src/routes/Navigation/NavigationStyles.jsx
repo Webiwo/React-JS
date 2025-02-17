@@ -1,4 +1,41 @@
-.header-bar {
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+export const HeaderBar = styled.header`
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+`;
+
+export const LogoLink = styled(Link)`
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+`;
+
+export const NavLinksContainer = styled.nav`
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+export const NavLink = styled(Link)`
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-top: 16px;
+  padding: 10px 15px;
+  cursor: pointer;
+`;
+
+/*
+.header - bar {
   height: 70px;
   width: 100%;
   display: flex;
@@ -47,3 +84,4 @@
     }
   }
 }
+*/

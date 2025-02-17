@@ -6,7 +6,7 @@ import {
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebaseUtils";
 import FormInput from "../FormInput/FormInput";
-import Button from "../Button/Button";
+import Button, { ButtonTypes } from "../Button/Button";
 import { FcGoogle } from "react-icons/fc";
 import "./SignIn.scss";
 
@@ -75,9 +75,12 @@ const SignIn = () => {
           <Button buttonType="inverted" type="submit">
             Sign in
           </Button>
-          <Button type="button" buttonType="google" onClick={singInWithGoogle}>
+          <Button
+            type="button"
+            buttonType={ButtonTypes.google}
+            onClick={singInWithGoogle}
+          >
             Sign in with
-            <FcGoogle />
           </Button>
         </div>
       </form>
