@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import "./CategoryItemsCatalog.scss";
-import CategoryCatalogItem from "../CategoryCatalogItem/CategoryCatalogItem";
+import CategoryItem from "../CategoryItem/CategoryItem";
 
 const CategoryItemsCatalog = ({ categories }) => {
   return (
     <div className="categories-container">
       {categories.map(({ id, ...category }) => (
-        <CategoryCatalogItem key={id} category={category} />
+        <CategoryItem key={id} category={category} />
       ))}
     </div>
   );

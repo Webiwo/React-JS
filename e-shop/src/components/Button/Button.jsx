@@ -34,7 +34,8 @@ const getButtonIcon = (buttonType = ButtonTypes.base) =>
 const Button = ({ children, buttonType, ...otherProps }) => {
   const CustomButton = getButton(buttonType);
   const CustomIcon = getButtonIcon(buttonType);
-
+  console.log("Icon", CustomIcon);
+  console.log(children);
   return (
     <CustomButton {...otherProps}>
       {children} <CustomIcon />
