@@ -23,7 +23,6 @@ export const CategoriesProvider = ({ children }) => {
     const getCategoryMap = async () => {
       const catMap = await getCategoriesAndDocuments();
       setCategoryMap(catMap);
-      console.log("loaded");
     };
     getCategoryMap();
   }, []);

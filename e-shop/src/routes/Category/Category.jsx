@@ -7,7 +7,6 @@ import "./Category.scss";
 const Category = () => {
   const { category } = useParams();
   const { categoryMap } = useContext(CategoriesContext);
-  console.log(category, categoryMap);
 
   const [products, setProducts] = useState(categoryMap[category]);
 
