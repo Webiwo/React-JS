@@ -1,12 +1,15 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
+import { UserContext } from "../../Context/UserContext";
 
 const LocalStorage = () => {
-  const [currentName, setCurrentName] = useState(() => {
-    const savedName = localStorage.getItem("name");
-    return savedName ? JSON.parse(savedName) : "";
-  });
+  const { user, updateUser } = useContext(UserContext);
   const [inputName, setInputName] = useState("");
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    const savedName = localStorage.getItem("name");
+    updateUser(savedName ? JSON.parse(savedName) : "");
+  }, []);
 
   const handleChange = (event) => {
     setInputName(event.target.value);
@@ -17,7 +20,7 @@ const LocalStorage = () => {
 
     const newName = inputName.trim();
     if (newName) {
-      setCurrentName(newName);
+      updateUser(newName);
       localStorage.setItem("name", JSON.stringify(newName));
       setInputName("");
     }
@@ -27,7 +30,7 @@ const LocalStorage = () => {
 
   return (
     <>
-      <h2>Hello {currentName}!</h2>
+      <h2>Hello {user}!</h2>
       <form onSubmit={handleSubmit}>
         <input
           ref={inputRef}

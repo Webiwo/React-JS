@@ -1,9 +1,11 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
+import { UserContext } from "../../Context/UserContext";
 
 const ToDo = () => {
   const [todos, setTodos] = useState([]);
   const [item, setItem] = useState("");
   const inputRef = useRef(null);
+  const { user } = useContext(UserContext);
 
   const handleChange = (event) => setItem(event.target.value);
 
@@ -21,7 +23,7 @@ const ToDo = () => {
 
   return (
     <>
-      <h2>ToDo List</h2>
+      <h2>ToDo list for {user}</h2>
       <form onSubmit={handleSubmit}>
         <input
           ref={inputRef}

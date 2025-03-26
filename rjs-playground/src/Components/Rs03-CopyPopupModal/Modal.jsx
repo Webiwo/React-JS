@@ -1,13 +1,11 @@
 import { createPortal } from "react-dom";
 
-const Modal = ({ showModal, date, onClose }) => {
+const Modal = ({ showModal, msg, onClose }) => {
   return createPortal(
     <section>
       {showModal && (
         <div className="modal">
-          <p>
-            Date <strong> {date} </strong> has been copied
-          </p>
+          <p>{msg}</p>
           <button onClick={onClose}>Close</button>
         </div>
       )}
