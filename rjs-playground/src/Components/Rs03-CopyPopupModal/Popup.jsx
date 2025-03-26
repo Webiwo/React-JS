@@ -1,14 +1,12 @@
 import { createPortal } from "react-dom";
 import "./modal.css";
 
-const Popup = ({ copied, date }) => {
+const Popup = ({ show, msg }) => {
   return createPortal(
     <section>
-      {copied && (
+      {show && (
         <div className="modal">
-          <p>
-            Date <strong> {date} </strong> has been copied
-          </p>
+          <p>{msg}</p>
         </div>
       )}
     </section>,

@@ -29,7 +29,7 @@ const CopyInput = () => {
       <input type="date" value={inputValue} onChange={handleChange} />
       <button onClick={handleCopy}>Copy</button>
       <button onClick={() => handleModal(true)}>Show copied date</button>
-      <Popup copied={copied} date={inputValue} />
+      <Popup show={copied} msg={`Date ${inputValue} has been copied`} />
       <Modal
         showModal={showModal}
         date={inputValue}
