@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-const Ex02ToDoList = () => {
+const ToDo = () => {
   const [todos, setTodos] = useState([]);
   const [item, setItem] = useState("");
   const inputRef = useRef(null);
@@ -43,4 +43,4 @@ const Ex02ToDoList = () => {
   );
 };
 
-export default Ex02ToDoList;
+export default ToDo;

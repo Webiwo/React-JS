@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-const Ex01LocalStorageName = () => {
+const LocalStorage = () => {
   const [currentName, setCurrentName] = useState(() => {
     const savedName = localStorage.getItem("name");
     return savedName ? JSON.parse(savedName) : "";
@@ -48,4 +48,4 @@ const Ex01LocalStorageName = () => {
   );
 };
 
-export default Ex01LocalStorageName;
+export default LocalStorage;

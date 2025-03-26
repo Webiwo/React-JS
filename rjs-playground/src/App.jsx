@@ -1,14 +1,16 @@
-import Ex01LocalStorageName from "./Components/Ex01LocalStorageName";
-import Ex02ToDoList from "./Components/Ex02ToDoList";
+import LocalStorage from "./Components/Rs01-LocalStorage/LocalStorage";
+import ToDo from "./Components/Rs02-ToDoList/ToDo";
+import CopyInput from "./Components/Rs03-CopyPopupModal/CopyInput";
 import "./App.css";
 
 function App() {
   return (
     <>
-      <Ex01LocalStorageName />
+      <LocalStorage />
       <hr />
-      <Ex02ToDoList />
+      <ToDo />
       <hr />
+      <CopyInput />
     </>
   );
 }
