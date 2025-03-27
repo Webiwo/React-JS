@@ -5,6 +5,7 @@ import FetchData from "./Components/Rs04-FetchData/FetchData";
 import "./App.css";
 import { UserProvider } from "./Context/UserContext";
 import ShoppingCart from "./Components/Rs05 -ShoppingCart/ShoppingCart";
+import Timer from "./Components/Rs06 - Timer/Timer";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
       <FetchData />
       <hr />
       <ShoppingCart />
+      <hr />
+      <Timer />
     </UserProvider>
   );
 }
